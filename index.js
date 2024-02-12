@@ -36,3 +36,4 @@ app.get('/furniture/products',products)
 app.post('/payment',(req,res)=>{
     res.status(200).send('ok')
 })
+app.listen(5000,()=>console.log('running in 5000'))
