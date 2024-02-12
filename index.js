@@ -1,15 +1,13 @@
 const express=require('express')
 const app=express()
 const {login}=require('./controller/login')
-const cors=require('cors')
-app.use(cors())
 const body_parser=require('body-parser')
+require('dotenv').config();
 const stripe=require('stripe')(
     "sk_test_51OK7pRSIOJiY1NziL2RChC31nzVTivbE9JO0pTlAkVsqUgXBswHtBNcTHkQCAm1wr2MZdjPUYc7g7yvWAJTJbyGj00ceYgNfjU"
     );
 const {v4:uuidv4}=require('uuid')
 const {signup}=require('./controller/signup')
-const PORT=process.env.PORT || 5000;
 const {Addtocart,cart,cartRemove,orderDetails}=require('./controller/cart')
 const cookie_parser=require('cookie-parser')
 const {homepage,mobiles,products}=require('./controller/shoppingapp')
@@ -38,4 +36,3 @@ app.get('/furniture/products',products)
 app.post('/payment',(req,res)=>{
     res.status(200).send('ok')
 })
-app.listen(PORT,()=>console.log("port is:",PORT))
