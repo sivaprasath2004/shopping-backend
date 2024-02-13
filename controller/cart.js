@@ -5,8 +5,8 @@ const Usages=require('../mongodb/loginSchema')
 const Addtocart=async(req,res)=>{
     try{
     await mongoose.connect(process.env.DATA_BASE)
-    let details=await Usages.find({_id:req.body._id})
-        details[0].id.push(req.body.id)
+    let details=await Usages.find({_id:req.query._id})
+        details[0].id.push(req.query.id)
      Usages.create(details)
      res.status(200).send('Successfully added in the cart')
 }catch(err){
