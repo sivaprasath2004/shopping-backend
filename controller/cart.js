@@ -6,14 +6,9 @@ const Addtocart=async(req,res)=>{
     try{
     await mongoose.connect(process.env.DATA_BASE)
     let details=await Usages.find({_id:req.body._id})
-    if(!details[0].id.includes(req.body.id)){
         details[0].id.push(req.body.id)
      Usages.create(details)
      res.status(200).send('Successfully added in the cart')
-    }
-    else{
-        res.status(200).send('already added in the cart')
-    }
 }catch(err){
         res.status(501).send('Internal Error')
       }
