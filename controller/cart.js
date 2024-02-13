@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 const users=require('../mongodb/dbconnect')
 require('dotenv').config();
 const Usages=require('../mongodb/loginSchema')
-const Addtocart=async(req,res)=>{
+const addtocart=async(req,res)=>{
     try{
     await mongoose.connect(process.env.DATA_BASE)
     let details=await Usages.find({_id:req.query._id})
@@ -62,4 +62,4 @@ Promise.all(using)
     });
 }
 
-module.exports={Addtocart,cart,cartRemove,orderDetails}
+module.exports={addtocart,cart,cartRemove,orderDetails}
